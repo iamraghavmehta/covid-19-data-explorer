@@ -1,0 +1,17 @@
+# Nimbus Cloud Deployment Configuration
+[app]
+name = "covid-19-data-explorer"
+type = "web"
+runtime = "python"
+version = "3.10"
+
+[build]
+command = "pip install -r requirements.txt"
+
+[run]
+command = "streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true"
+
+[healthcheck]
+path = "/_stcore/health"
+port = 8501
+timeout = 30
